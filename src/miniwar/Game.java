@@ -18,7 +18,7 @@ public class Game {
     protected Map<String, Player> players = new HashMap<String, Player>();
 
     private List<Player> playOrder;
-    private Integer current_round;
+    private Integer currentRound;
 
     public Game(Integer rounds) {
         this.rounds = rounds;
@@ -34,15 +34,15 @@ public class Game {
             this.playOrder.add(player);
         }
 
-        this.current_round = 1;
-        while(this.current_round <= this.rounds) {
+        this.currentRound = 1;
+        while(this.currentRound <= this.rounds) {
             this.playRound();
-            this.current_round += 1;
+            this.currentRound += 1;
         }
     }
 
     public void playRound() {
-        System.out.println("Round: " + this.current_round);
+        System.out.println("Round: " + this.currentRound);
 
         for(Player player: this.playOrder) {
             player.playRound(this.getOtherPlayers(player));
