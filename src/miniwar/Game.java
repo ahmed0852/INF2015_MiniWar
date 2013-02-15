@@ -2,9 +2,11 @@ package miniwar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import miniwar.exceptions.NotEnoughPlayersException;
 import miniwar.exceptions.PlayerNotInGameException;
 
@@ -49,8 +51,8 @@ public class Game {
         }
     }
 
-    public List<Player> getOtherPlayers(Player player) {
-        List<Player> otherPlayers = new LinkedList<Player>(this.playOrder);
+    public Set<Player> getOtherPlayers(Player player) {
+        Set<Player> otherPlayers = new HashSet<Player>(this.playOrder);
         otherPlayers.remove(player);
         return otherPlayers;
     }

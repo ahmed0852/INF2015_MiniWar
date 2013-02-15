@@ -1,6 +1,7 @@
 package miniwar;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Players can fight each others
@@ -16,7 +17,7 @@ public class Player {
         this.name = name;
     }
 
-    public void playRound(List<Player> otherPlayers) {
+    public void playRound(Set<Player> otherPlayers) {
         //@TODO add better player routine here
         for(Player player: otherPlayers) {
             this.attack(player);
