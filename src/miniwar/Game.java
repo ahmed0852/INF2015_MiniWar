@@ -59,12 +59,12 @@ public class Game {
         this.players.put(player.getName(), player);
     }
 
-    public Boolean playerInGame(String name) {
+    public Boolean isPlayerInGame(String name) {
         return this.players.containsKey(name);
     }
 
     public Player getPlayerByName(String name) throws PlayerNotInGameException {
-        if(!this.playerInGame(name)) {
+        if(!this.isPlayerInGame(name)) {
             throw new PlayerNotInGameException(name);
         }
         return players.get(name);
