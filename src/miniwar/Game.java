@@ -3,7 +3,6 @@ package miniwar;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -11,33 +10,36 @@ import miniwar.exceptions.NotEnoughPlayersException;
 import miniwar.exceptions.PlayerNotInGameException;
 
 /**
- * Main controller of the game
- * organize game rounds and maintain player list
- * @author Alexandre Terrasa
+ * Main controller of the game organize game rounds and maintain player list
  */
 public class Game {
-    protected Integer rounds;
-    protected Map<String, Player> players = new HashMap<String, Player>();
 
-    private List<Player> playOrder;
+    protected Integer rounds;
     private Integer currentRound;
+
+    protected Map<String, Player> players = new HashMap<String, Player>();
+    private List<Player> playOrder;
 
     public Game(Integer rounds) {
         this.rounds = rounds;
     }
 
+    public void resetGame() {
+        players.clear();
+    }
+
     public void startGame() throws NotEnoughPlayersException {
-        if(this.players.size() <= 1) {
+        if (this.players.size() <= 1) {
             throw new NotEnoughPlayersException();
         }
 
         this.playOrder = new ArrayList<Player>();
-        for(Player player: this.players.values()) {
+        for (Player player : this.players.values()) {
             this.playOrder.add(player);
         }
 
         this.currentRound = 1;
-        while(this.currentRound <= this.rounds) {
+        while (this.currentRound <= this.rounds) {
             this.playRound();
             this.currentRound += 1;
         }
@@ -46,7 +48,7 @@ public class Game {
     public void playRound() {
         System.out.println("Round: " + this.currentRound);
 
-        for(Player player: this.playOrder) {
+        for (Player player : this.playOrder) {
             player.playRound(this.getOtherPlayers(player));
         }
     }
@@ -66,7 +68,7 @@ public class Game {
     }
 
     public Player getPlayerByName(String name) throws PlayerNotInGameException {
-        if(!this.isPlayerInGame(name)) {
+        if (!this.isPlayerInGame(name)) {
             throw new PlayerNotInGameException(name);
         }
         return players.get(name);

@@ -1,13 +1,12 @@
 package miniwar;
 
-import java.util.List;
 import java.util.Set;
 
 /**
  * Players can fight each others
- * @author Alexandre Terrasa
  */
 public class Player {
+
     protected Integer life = 100;
     protected Integer force = 5;
     protected Integer dps = 2;
@@ -19,7 +18,7 @@ public class Player {
 
     public void playRound(Set<Player> otherPlayers) {
         //@TODO add better player routine here
-        for(Player player: otherPlayers) {
+        for (Player player : otherPlayers) {
             this.attack(player);
             break;
         }
@@ -43,5 +42,4 @@ public class Player {
     public String getName() {
         return name;
     }
-
 }
